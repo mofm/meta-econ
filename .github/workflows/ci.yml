@@ -1,0 +1,68 @@
+name: "Continuous Integration"
+
+on:
+  push:
+#    branches:
+#      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        machine: [qemux86-64]
+
+    env:
+      BRANCH: master
+
+    container:
+      image: ossystems/github-actions-yocto-builder:latest
+      env:
+        WORKSPACE: /opt/build
+      volumes:
+        - ${{ github.workspace }}:/opt/build
+      options: --privileged
+
+    steps:
+      - name: Prepare the container
+        shell: bash
+        run: |
+          sudo sysctl fs.inotify.max_user_watches=524288
+          sudo chown builder:builder ${WORKSPACE}
+      - name: Checkout required repositories
+        shell: bash
+        run: |
+          echo Cloning OE Core
+          git clone git://git.openembedded.org/openembedded-core oe-core
+          cd oe-core
+          git clone git://git.openembedded.org/bitbake bitbake
+          git checkout hardknott
+          cd bitbake
+          git checkout 1.50
+          echo
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+        with:
+          path: meta-econ
+
+      - name: Setup E-Con Linux environment
+        shell: bash
+        run: |
+          source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
+          cat <<EOF >> conf/local.conf
+          MACHINE = "${{ matrix.machine }}"
+          INHERIT += "rm_work"
+          BB_DISKMON_DIRS = ""
+          BB_GIT_SHALLOW = "1"
+          BB_GIT_SHALLOW_DEPTH = "1"
+          BB_GENERATE_SHALLOW_TARBALLS = "1"
+          EOF
+          sed -i "s/buildstats//g" conf/local.conf
+          bitbake-layers add-layer ${WORKSPACE}/meta-econ
+      - name: Checking parsing of metadata
+        shell: bash
+        run: |
+          source ${WORKSPACE}/poky/oe-init-build-env ${WORKSPACE}/build
+          bitbake world -S none
