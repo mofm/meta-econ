@@ -18,7 +18,7 @@ jobs:
       BRANCH: master
 
     container:
-      image: ossystems/github-actions-yocto-builder:latest
+      image: threexc/yocto-builder:latest
       env:
         WORKSPACE: /opt/build
       volumes:
