@@ -26,6 +26,11 @@ jobs:
       options: --user root
 
     steps:
+      - name: Prepare the container
+        shell: bash
+        run: |
+          sudo sysctl fs.inotify.max_user_watches=524288
+
       - name: Checkout required repositories
         shell: bash
         run: |
@@ -59,5 +64,6 @@ jobs:
       - name: Checking parsing of metadata
         shell: bash
         run: |
-          source ${WORKSPACE}/poky/oe-init-build-env ${WORKSPACE}/build
-          bitbake world -S none
+          source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
+          DISTRO="econ-tiny" bitbake econ-core-image
+          DISTRO="econ" bitbake econ-core-image
