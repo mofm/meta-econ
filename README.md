@@ -1,4 +1,4 @@
-![e-Con Linux CI](https://github.com/mofm/meta-econ/actions/workflows/ci.yml/badge.svg)
+![e-Con Linux CI](https://github.com/mofm/meta-econ/actions/workflows/ci.yml/badge.svg)![e-Con Linux Releases](https://github.com/mofm/meta-econ/actions/workflows/cd.yml/badge.svg)
 
 # e-Con Linux Distribution
 
