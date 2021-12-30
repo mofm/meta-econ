@@ -1,10 +1,9 @@
-name: "Continuous Integration"
+name: "Release"
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -43,7 +42,6 @@ jobs:
           cd bitbake
           git checkout 1.50
           echo
-
       - name: Checkout this repository
         uses: actions/checkout@v2
         with:
@@ -70,4 +68,26 @@ jobs:
           source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
           DISTRO="econ-tiny" bitbake econ-core-image
           DISTRO="econ" bitbake econ-core-image
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref }} ${{ steps.ver.outputs.ver }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload Release Artifacts
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            ${WORKSPACE}/build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
+            ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
 
