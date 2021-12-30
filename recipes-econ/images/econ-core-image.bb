@@ -5,7 +5,6 @@ IMAGE_FSTYPES = "container"
 
 IMAGE_FEATURES = ""
 IMAGE_LINGUAS = ""
-INIT_MANAGER="systemd"
 
 inherit core-image
 
