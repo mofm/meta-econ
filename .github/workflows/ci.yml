@@ -23,7 +23,6 @@ jobs:
         WORKSPACE: /home/builder
       volumes:
         - ${{ github.workspace }}:/home/builder
-      options: --privileged
 
     steps:
       - name: Prepare the container
