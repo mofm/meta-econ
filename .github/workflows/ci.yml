@@ -29,7 +29,7 @@ jobs:
       - name: Prepare the container
         shell: bash
         run: |
-          sudo sysctl fs.inotify.max_user_watches=524288
+          sysctl fs.inotify.max_user_watches=524288
 
       - name: Checkout required repositories
         shell: bash
