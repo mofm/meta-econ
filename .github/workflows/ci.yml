@@ -23,9 +23,15 @@ jobs:
         WORKSPACE: /home/builder
       volumes:
         - ${{ github.workspace }}:/home/builder
-      options: --user root
+      options: --privileged
 
     steps:
+      - name: Prepare the container
+        shell: bash
+        run: |
+          sudo sysctl fs.inotify.max_user_watches=524288
+          sudo chown builder:builder ${WORKSPACE}
+
       - name: Checkout required repositories
         shell: bash
         run: |
