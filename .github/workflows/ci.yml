@@ -23,6 +23,7 @@ jobs:
         WORKSPACE: /home/builder
       volumes:
         - ${{ github.workspace }}:/home/builder
+      options: --user builder
 
     steps:
       - name: Checkout required repositories
