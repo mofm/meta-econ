@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           sudo sysctl fs.inotify.max_user_watches=524288
-          sudo chown builder:builder ${WORKSPACE}
+          sudo chown builder:users ${WORKSPACE}
 
       - name: Checkout required repositories
         shell: bash
