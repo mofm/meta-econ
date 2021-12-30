@@ -20,9 +20,9 @@ jobs:
     container:
       image: threexc/yocto-builder:latest
       env:
-        WORKSPACE: /opt/build
+        WORKSPACE: /home/builder
       volumes:
-        - ${{ github.workspace }}:/opt/build
+        - ${{ github.workspace }}:/home/builder
       options: --privileged
 
     steps:
