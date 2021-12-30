@@ -1,0 +1,83 @@
+![e-Con Linux CI](https://github.com/mofm/meta-econ/actions/workflows/ci.yml/badge.svg)
+
+# e-Con Linux Distribution
+
+e-Con Linux is an embedded Linux Distribution optimized for systemd-nspawn containers. It is built on OpenEmbedded. This distribution is focus on minimal and slim container image.
+
+There are two different core image: 
+
+- e-Con Core Image
+- e-Con Tiny Core Image
+
+## e-Con Core Image
+
+e-Con Core Image size is larger than e-Con Core Tiny. It is built with glibc and systemd. Natively, actually systemd-nspawn only supports systemd. So it is built systemd.
+
+e-Con Core Image packages:
+
+````
+base-files
+busybox
+dbus-1
+dbus-common
+dbus-tools
+kmod
+libacl1
+libattr1
+libblkid1
+libc6
+libcap
+libcrypt2
+libdbus-1-3 
+libexpat1
+libkmod2
+liblzma5
+libmount1
+libnss-myhostname2
+libsystemd0
+libz1
+netbase
+os-release
+packagegroup-core-boot
+shadow-base
+shadow-securetty
+systemd
+systemd-compat-units
+systemd-serialgetty
+systemd-udev-rules
+systemd-vconsole-setup
+udev
+util-linux-agetty
+util-linux-fsck
+util-linux-mount
+util-linux-sulogin
+util-linux-umount
+volatile-binds
+````
+
+But even so its compressed rootfs size: 6.7 MB
+uncompressed size: ~19MB
+
+## e-Con Tiny Core Image
+
+e-Con Tiny Core Image is really so tiny. It's built with musl and busybox.
+
+e-Con Tiny Core Image packages:
+
+````
+base-files
+busybox
+busybox-inittab
+busybox-mdev
+libattr1
+musl
+netbase
+os-release
+packagegroup-core-boot
+shadow-base
+shadow-securetty
+util-linux-sulogin
+````
+
+compressed rootfs size: ~768 KB :) 
+uncompressed rootfs size: ~2.2 MB :)
