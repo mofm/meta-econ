@@ -57,6 +57,6 @@ jobs:
           DISTRO="econ" bitbake econ-core-image
 
       - name: Clear build directory
-        shell:
+        shell: bash
         run: |
           rm -rf /home/mofm/actions-runner/_work/meta-econ/meta-econ/*
