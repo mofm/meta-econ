@@ -80,14 +80,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Upload Release Artifacts
+      - name: Upload Release E-Con Tiny Core
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            ${WORKSPACE}/build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          files: ${WORKSPACE}/build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
             ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
 
+      - name: Upload Release E-Con Core
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          files: ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
