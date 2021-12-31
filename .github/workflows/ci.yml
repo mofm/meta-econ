@@ -8,30 +8,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 720
 
     strategy:
       matrix:
         machine: [qemux86-64]
 
     env:
-      BRANCH: master
+      WORKSPACE: /home/mofm/builder
 
-    container:
-      image: threexc/yocto-builder:latest
-      env:
-        WORKSPACE: /home/builder
-      volumes:
-        - ${{ github.workspace }}:/home/builder
-      options: --privileged
 
     steps:
-      - name: Prepare the container
-        shell: bash
-        run: |
-          sudo sysctl fs.inotify.max_user_watches=524288
-          sudo chown builder:users ${WORKSPACE}
-
       - name: Checkout required repositories
         shell: bash
         run: |
@@ -54,12 +42,10 @@ jobs:
         run: |
           source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
           cat <<EOF >> conf/local.conf
+          SSTATE_DIR = "~/openembedded/sstate-cache"
+          DL_DIR = "~/openembedded/downloads"
           MACHINE = "${{ matrix.machine }}"
           INHERIT += "rm_work"
-          BB_DISKMON_DIRS = ""
-          BB_GIT_SHALLOW = "1"
-          BB_GIT_SHALLOW_DEPTH = "1"
-          BB_GENERATE_SHALLOW_TARBALLS = "1"
           EOF
           sed -i "s/buildstats//g" conf/local.conf
           bitbake-layers add-layer ${WORKSPACE}/meta-econ
