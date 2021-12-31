@@ -15,10 +15,6 @@ jobs:
       matrix:
         machine: [qemux86-64]
 
-    env:
-      WORKSPACE: /home/mofm/builder
-
-
     steps:
       - name: Checkout required repositories
         shell: bash
@@ -40,20 +36,23 @@ jobs:
       - name: Setup E-Con Linux environment
         shell: bash
         run: |
-          source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
+          source oe-core/oe-init-build-env build
           cat <<EOF >> conf/local.conf
+          BB_NUMBER_THREADS = "4"
+          PARALLEL_MAKE = "-j 4"
+          do_fetch[number_threads] = "4"
           SSTATE_DIR = "~/openembedded/sstate-cache"
           DL_DIR = "~/openembedded/downloads"
           MACHINE = "${{ matrix.machine }}"
           INHERIT += "rm_work"
           EOF
           sed -i "s/buildstats//g" conf/local.conf
-          bitbake-layers add-layer ${WORKSPACE}/meta-econ
+          bitbake-layers add-layer meta-econ
 
       - name: Checking parsing of metadata
         shell: bash
         run: |
-          source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
+          source oe-core/oe-init-build-env build
           DISTRO="econ-tiny" bitbake econ-core-image
           DISTRO="econ" bitbake econ-core-image
 
