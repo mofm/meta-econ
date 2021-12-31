@@ -1,36 +1,33 @@
-name: "Release"
+name: "e-Con Linux Releases"
+
 
 on:
   push:
     tags:
       - '*'
 
+
 jobs:
+  cleaner:
+    runs-on: [self-hosted, Linux]
+    steps:
+      - name: Runner workspace path
+        run: |
+          echo "Cleaning up previous run"
+          rm -rf "${{ github.workspace }}"
+
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 720
 
     strategy:
       matrix:
         machine: [qemux86-64]
 
     env:
-      BRANCH: master
-
-    container:
-      image: threexc/yocto-builder:latest
-      env:
-        WORKSPACE: /home/builder
-      volumes:
-        - ${{ github.workspace }}:/home/builder
-      options: --privileged
+      working-directory:
 
     steps:
-      - name: Prepare the container
-        shell: bash
-        run: |
-          sudo sysctl fs.inotify.max_user_watches=524288
-          sudo chown builder:users ${WORKSPACE}
-
       - name: Checkout required repositories
         shell: bash
         run: |
@@ -42,6 +39,7 @@ jobs:
           cd bitbake
           git checkout 1.50
           echo
+
       - name: Checkout this repository
         uses: actions/checkout@v2
         with:
@@ -50,22 +48,23 @@ jobs:
       - name: Setup E-Con Linux environment
         shell: bash
         run: |
-          source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
+          source oe-core/oe-init-build-env build
           cat <<EOF >> conf/local.conf
+          BB_NUMBER_THREADS = "4"
+          PARALLEL_MAKE = "-j 4"
+          do_fetch[number_threads] = "4"
+          SSTATE_DIR = "/home/mofm/openembedded/sstate-cache"
+          DL_DIR = "/home/mofm/openembedded/downloads"
           MACHINE = "${{ matrix.machine }}"
           INHERIT += "rm_work"
-          BB_DISKMON_DIRS = ""
-          BB_GIT_SHALLOW = "1"
-          BB_GIT_SHALLOW_DEPTH = "1"
-          BB_GENERATE_SHALLOW_TARBALLS = "1"
           EOF
           sed -i "s/buildstats//g" conf/local.conf
-          bitbake-layers add-layer ${WORKSPACE}/meta-econ
+          bitbake-layers add-layer ../meta-econ
 
       - name: Checking parsing of metadata
         shell: bash
         run: |
-          source ${WORKSPACE}/oe-core/oe-init-build-env ${WORKSPACE}/build
+          source oe-core/oe-init-build-env build
           DISTRO="econ-tiny" bitbake econ-core-image
           DISTRO="econ" bitbake econ-core-image
 
@@ -84,7 +83,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${WORKSPACE}/build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          file: ./build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
@@ -93,7 +92,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          file: ./build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          asset_name: 
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
