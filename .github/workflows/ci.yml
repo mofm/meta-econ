@@ -47,7 +47,7 @@ jobs:
           INHERIT += "rm_work"
           EOF
           sed -i "s/buildstats//g" conf/local.conf
-          bitbake-layers add-layer meta-econ
+          bitbake-layers add-layer ../meta-econ
 
       - name: Checking parsing of metadata
         shell: bash
