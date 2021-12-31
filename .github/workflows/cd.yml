@@ -84,8 +84,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          files: ${WORKSPACE}/build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
-            ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          file: ${WORKSPACE}/build/tmp-musl/deploy/images/qemux86-64/*.rootfs.tar.bz2
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
@@ -94,7 +93,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          files: ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
+          file: ${WORKSPACE}/build/tmp-glibc/deploy/images/qemux86-64/*.rootfs.tar.bz2
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
