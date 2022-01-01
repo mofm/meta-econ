@@ -3,9 +3,6 @@ LICENSE = "MIT"
 
 IMAGE_FSTYPES = "container"
 
-export IMAGE_BASENAME = "${DISTRO}"
-IMAGE_NAME = "${IMAGE_BASENAME}-core-${DATE}"
-
 IMAGE_FEATURES = ""
 IMAGE_LINGUAS = ""
 
@@ -18,3 +15,5 @@ rootfs_fixup_var_volatile () {
 }
 
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_fixup_var_volatile ; "
+
+export IMAGE_BASENAME = "${DISTRO}-core-${DATE}"

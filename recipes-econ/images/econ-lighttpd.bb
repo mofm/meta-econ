@@ -9,3 +9,4 @@ IMAGE_INSTALL += " \
 	lighttpd-module-accesslog \
 "
 
+export IMAGE_BASENAME = "${DISTRO}-lighttpd-${DATE}"
