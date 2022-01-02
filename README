@@ -1,0 +1,42 @@
+OpenEmbedded/Yocto layer for systemd-nspawn containers ( E-Con Linux Distribution)
+======================================================================================
+
+This layer provides support for tiny/minimal systemd-nspawn containers for
+use with OpenEmbedded and/or Yocto layer.
+
+This layer depends on:
+
+URI: git://git.openembedded.org/openembedded-core
+branch: hardknott
+revision: HEAD
+
+URI: git://git.openembedded.org/meta-openembedded
+branch: hardknott
+revision: HEAD
+
+Contributing
+------------
+
+Please submit any patches against the `meta-econ` layer by
+using the GitHub pull-request feature.  Fork the repo, make a branch,
+do the work, rebase from upstream, create the pull request.
+
+For some useful guidelines to be followed when submitting patches,
+please refer to:
+http://openembedded.org/wiki/Commit_Patch_Message_Guidelines
+
+Pull requests will be discussed within the GitHub pull-request
+infrastructure. If you want to get informed on new PRs and the
+follow-up discussions please use GitHub's notification system.
+
+or 
+
+When sending single patches, please using something like:
+'git send-email -1 -M --to emre.eryilmaz@piesso.com --subject-prefix=meta-econ][PATCH'
+
+Maintainer: Emre Eryilmaz <emre.eryilmaz@piesso.com>
+
+
+Source code:
+
+    https://github.com/mofm/meta-econ
