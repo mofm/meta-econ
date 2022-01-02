@@ -11,7 +11,7 @@ There are two different core image:
 
 ## e-Con Core Image
 
-e-Con Core Image size is larger than e-Con Tiny Core. It is built with glibc and systemd. Natively, actually systemd-nspawn only supports systemd. So it is built systemd.
+e-Con Core Image size is larger than e-Con Tiny Core. It is built with glibc and systemd. Natively, actually systemd-nspawn only supports systemd. So it is built with systemd.
 
 e-Con Core Image packages:
 
@@ -79,5 +79,5 @@ shadow-securetty
 util-linux-sulogin
 ````
 
-compressed rootfs size: ~768 KB :)
-uncompressed rootfs size: ~2.2 MB
+compressed rootfs size: ~764 KB :)
+uncompressed rootfs size: ~1.7 MB

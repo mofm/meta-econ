@@ -19,5 +19,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-* doesn't start init services (busybox init)i
+* doesn't start init services (busybox init)
 
