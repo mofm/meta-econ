@@ -1,7 +1,7 @@
 SUMMARY = "A lighttpd container image"
 LICENSE = "MIT"
 
-require econ-core-image.bb
+require econ-image.inc
 
 IMAGE_INSTALL += " \
 	lighttpd \
@@ -10,3 +10,4 @@ IMAGE_INSTALL += " \
 "
 
 export IMAGE_BASENAME = "${DISTRO}-lighttpd-${DATE}"
+inherit econ-common
