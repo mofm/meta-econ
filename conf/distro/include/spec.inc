@@ -9,3 +9,4 @@ NO_RECOMMENDATIONS = "1"
 USE_NLS = "no"
 ENABLE_WIDEC = "false"
 ENABLE_WIDEC_class-native = "true"
+

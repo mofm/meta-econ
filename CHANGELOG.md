@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * added busybox-init
 * econ-tiny-lighttpd image
+* added image hashing (SHA256SUMS)
 
 ### Changed
 
@@ -18,5 +19,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-* doesn't start init services
+* doesn't start init services (busybox init)i
 
