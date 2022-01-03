@@ -37,3 +37,8 @@ nothing
 
 * doesn't start init services (busybox init)
 
+## [0.1.0-r3]
+
+## Added
+
+* Added econ-core and econ-tiny-core image
