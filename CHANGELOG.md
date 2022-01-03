@@ -18,7 +18,7 @@ nothing
 
 nothing
 
-## [0.2.0] - 2022-01-04
+## [0.2.0-r1] - 2022-01-04
 
 ### Added
 
@@ -37,7 +37,7 @@ nothing
 
 * doesn't start init services (busybox init)
 
-## [0.1.0-r3]
+## [0.2.0]
 
 ## Added
 
