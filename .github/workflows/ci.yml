@@ -62,10 +62,11 @@ jobs:
           sed -i "s/buildstats//g" conf/local.conf
           bitbake-layers add-layer ../meta-econ
 
-      - name: Checking parsing of metadata
+      - name: Building Images
         shell: bash
         run: |
           source oe-core/oe-init-build-env build
           DISTRO="econ-tiny" bitbake econ-core-image
+          DISTRO="econ-tiny" bitbake econ-lighttpd
           DISTRO="econ" bitbake econ-core-image
 

@@ -10,4 +10,4 @@ IMAGE_INSTALL += " \
 "
 
 export IMAGE_BASENAME = "${DISTRO}-lighttpd-${DATE}"
-inherit econ-common
+include common.inc
