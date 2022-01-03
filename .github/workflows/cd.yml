@@ -76,6 +76,8 @@ jobs:
 
       - name: Release Notes
         uses: CSchoel/release-notes-from-changelog@v1
+        env:
+          working-directory: ./meta-econ
 
       - name: Show Release Notes
         run: |
