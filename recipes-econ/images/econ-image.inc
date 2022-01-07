@@ -1,4 +1,4 @@
-IMAGE_FSTYPES = "container"
+#IMAGE_FSTYPES = "container"
   
 IMAGE_FEATURES = "" 
 IMAGE_LINGUAS = "" 

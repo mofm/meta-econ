@@ -25,7 +25,7 @@ def econ_write_sha256(d):
     write_lines = []
     deploydir = (d.getVar('DEPLOY_DIR_IMAGE', True) or '')
     for file in os.listdir(deploydir):
-        if file.endswith(".tar.bz2"):
+        if file.endswith(".tar.xz"):
             shahash = econ_get_sha256(deploydir, file)
             write_lines.append("{}  {}".format(shahash, file))
 
