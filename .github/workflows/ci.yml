@@ -61,6 +61,7 @@ jobs:
           EOF
           sed -i "s/buildstats//g" conf/local.conf
           bitbake-layers add-layer ../meta-econ
+          bitbake-layers show-layers
 
       - name: Building Images
         shell: bash
