@@ -81,7 +81,7 @@ jobs:
           working-directory: meta-econ
 
       - name: Show Release Notes
-        - run: cat meta-econ/RELEASE.md
+        run: cat meta-econ/RELEASE.md
 
       - name: Create Release
         uses: actions/create-release@v1
