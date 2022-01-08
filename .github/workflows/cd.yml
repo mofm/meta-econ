@@ -74,6 +74,15 @@ jobs:
         run: |
           gpg --sign ./build/SHA256SUMS
 
+      - name: Release Notes
+        uses: CSchoel/release-notes-from-changelog@v1.1
+        with:
+          version: 1.1.0
+          working-directory: meta-econ
+
+      - name: Show Release Notes
+        - run: cat meta-econ/RELEASE.md
+
       - name: Create Release
         uses: actions/create-release@v1
         id: create_release
@@ -89,7 +98,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./build/tmp-musl/deploy/images/qemux86-64/*qemux86-64.tar.bz2
+          file: ./build/tmp-musl/deploy/images/qemux86-64/*qemux86-64.tar.xz
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
@@ -98,7 +107,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./build/tmp-glibc/deploy/images/qemux86-64/*qemux86-64.tar.bz2
+          file: ./build/tmp-glibc/deploy/images/qemux86-64/*qemux86-64.tar.xz
           asset_name: 
           tag: ${{ github.ref }}
           overwrite: true

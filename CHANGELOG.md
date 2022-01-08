@@ -18,6 +18,20 @@ nothing
 
 nothing
 
+## [0.3.0] - 2022-01-08
+
+### Added 
+
+* auto create release from changelog
+
+### Changed
+
+* Changed compression alg bzip to xz
+
+### Fixed
+
+* fixed systemd import error.( trail garbage )
+
 ## [0.2.0-r1] - 2022-01-04
 
 ### Added
