@@ -32,7 +32,7 @@ nothing
 
 * fixed systemd import error.( trail garbage )
 
-## [0.2.0-r1] - 2022-01-04
+## [0.2.0-r2] - 2022-01-04
 
 ### Added
 
@@ -59,6 +59,6 @@ nothing
 
 
 [Unreleased]: https://github.com/mofm/meta-econ/compare/0.3.0...HEAD
-[0.3.0]: https://github.com/mofm/meta-econ/compare/0.3.0...0.2.0-r1
-[0.2.0-r1]: https://github.com/mofm/meta-econ/compare/0.2.0-r1...0.2.0
+[0.3.0]: https://github.com/mofm/meta-econ/compare/0.3.0...0.2.0-r2
+[0.2.0-r2]: https://github.com/mofm/meta-econ/compare/0.2.0-r2...0.2.0
 [0.2.0]: https://github.com/mofm/meta-econ/releases/tag/0.2.0
