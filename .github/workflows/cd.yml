@@ -75,7 +75,7 @@ jobs:
           gpg --sign ./build/SHA256SUMS
 
       - name: Release Notes
-        uses: CSchoel/release-notes-from-changelog@v1.1
+        uses: CSchoel/release-notes-from-changelog@v1
         with:
           working-directory: meta-econ
 

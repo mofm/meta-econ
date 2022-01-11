@@ -18,7 +18,7 @@ nothing
 
 nothing
 
-## [0.3.0-r1] - 2022-01-08
+## [0.3.0] - 2022-01-11
 
 ### Added 
 
@@ -56,3 +56,9 @@ nothing
 ## Added
 
 * Added econ-core and econ-tiny-core image
+
+
+[Unreleased]: https://github.com/mofm/meta-econ/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/mofm/meta-econ/compare/0.3.0...0.2.0-r1
+[0.2.0-r1]: https://github.com/mofm/meta-econ/compare/0.2.0-r1...0.2.0
+[0.2.0]: https://github.com/mofm/meta-econ/releases/tag/0.2.0
