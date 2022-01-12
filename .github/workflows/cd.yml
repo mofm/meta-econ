@@ -33,6 +33,8 @@ jobs:
         run: |
           echo Cloning OE Core
           git clone git://git.openembedded.org/openembedded-core oe-core
+          echo Cloning Meta-Openembbeded
+          git clone https://github.com/openembedded/meta-openembedded.git meta-openembedded
           cd oe-core
           git clone git://git.openembedded.org/bitbake bitbake
           git checkout hardknott
@@ -59,6 +61,8 @@ jobs:
           INHERIT += "rm_work"
           EOF
           sed -i "s/buildstats//g" conf/local.conf
+          bitbake-layers add-layer ../meta-openembedded/meta-oe
+          bitbake-layers add-layer ../meta-openembedded/meta-webserver
           bitbake-layers add-layer ../meta-econ
 
       - name: Building Images
