@@ -36,7 +36,9 @@ jobs:
           git clone git://git.openembedded.org/openembedded-core oe-core
           echo Cloning Meta-Openembedded
           git clone https://github.com/openembedded/meta-openembedded.git meta-openembedded
-          cd oe-core
+          cd meta-openembedded
+          git checkout hardknott
+          cd ../oe-core
           git clone git://git.openembedded.org/bitbake bitbake
           git checkout hardknott
           cd bitbake
