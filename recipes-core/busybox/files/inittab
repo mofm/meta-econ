@@ -39,5 +39,6 @@ null::sysinit:/bin/busybox hostname -F /etc/hostname
 #
 
 #tty1:12345:respawn:/sbin/getty 38400 tty1
-console::respawn:/sbin/getty 38400 console
+#console::respawn:/sbin/getty 38400 console
+::respawn:-/bin/sh +m
 

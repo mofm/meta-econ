@@ -13,6 +13,7 @@ def econ_create_nspawn(d):
     [Exec]
     # Settings files may include an [Exec] section,
     # which carries various execution parameters:
+    PrivateUsers=no
     
     [Files]
     # Settings files may include a [Files] section, which carries 
@@ -39,5 +40,5 @@ python do_nspawn_files () {
     econ_create_nspawn(d)
 }
 
-addtask nspawn_files before do_build after do_shasums
+addtask nspawn_files before do_build after do_image_complete
 

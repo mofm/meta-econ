@@ -55,8 +55,8 @@ util-linux-umount
 volatile-binds
 ````
 
-But even so its compressed rootfs size: 6.7 MB
-uncompressed size: ~19MB
+But even so its compressed rootfs size: 4.9 MB
+uncompressed size: ~17MB
 
 ## e-Con Tiny Core Image
 
@@ -68,7 +68,7 @@ e-Con Tiny Core Image packages:
 base-files
 busybox
 busybox-inittab
-busybox-mdev
+init-ifupdown
 libattr1
 musl
 netbase
@@ -79,5 +79,5 @@ shadow-securetty
 util-linux-sulogin
 ````
 
-compressed rootfs size: ~764 KB :)
-uncompressed rootfs size: ~1.7 MB
+compressed rootfs size: ~660 KB :)
+uncompressed rootfs size: ~1.2 MB

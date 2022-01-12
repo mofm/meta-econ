@@ -25,7 +25,7 @@ def econ_write_sha256(d):
     write_lines = []
     deploydir = (d.getVar('DEPLOY_DIR_IMAGE', True) or '')
     for file in os.listdir(deploydir):
-        if file.endswith(".tar.xz"):
+        if file.endswith((".tar.xz", ".nspawn")):
             shahash = econ_get_sha256(deploydir, file)
             write_lines.append("{}  {}".format(shahash, file))
 
@@ -44,4 +44,4 @@ python do_shasums () {
     econ_write_sha256(d)
 }
 
-addtask shasums before do_build after do_image_complete
+addtask shasums before do_build after do_nspawn_files
