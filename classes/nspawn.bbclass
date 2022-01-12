@@ -13,7 +13,8 @@ def econ_create_nspawn(d):
     [Exec]
     # Settings files may include an [Exec] section,
     # which carries various execution parameters:
-    PrivateUsers=no
+    PrivateUsers=false
+    LinkJournal=no
     
     [Files]
     # Settings files may include a [Files] section, which carries 
@@ -24,7 +25,7 @@ def econ_create_nspawn(d):
     # which carries various parameters configuring the network connectivity of the container:
     
     # Defaults, containers uses host networks:
-    VirtualEthernet=no
+    VirtualEthernet=false
     """)
     t = Template(nspawn_template)
     result = t.safe_substitute(nspawn_name=nspawn_script_name)

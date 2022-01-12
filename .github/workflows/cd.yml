@@ -67,6 +67,7 @@ jobs:
           source oe-core/oe-init-build-env build
           DISTRO="econ-tiny" bitbake econ-core-image
           DISTRO="econ-tiny" bitbake econ-lighttpd
+          DISTRO="econ-tiny" bitbake econ-nginx
           DISTRO="econ" bitbake econ-core-image
 
       - name: Sign SHA256SUMS file

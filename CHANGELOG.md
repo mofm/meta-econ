@@ -25,6 +25,7 @@ nothing
 
 * added '.nspawn' suffix to SHA256SUMS
 * removed busybox-mdev from econ tiny core image
+* added 'e-Con Tiny' nginx image
 
 ### Fixed
 
