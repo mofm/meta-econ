@@ -23,11 +23,12 @@ nothing
 ### Added 
 
 * added busybox-udhcpc package to core image
+* Added nginx http/2 support 
 
 ### Changed
 
 * gpg --detach-sig
-* changed econ class
+* changed econ classes
 
 
 ## [0.3.0-r1]
