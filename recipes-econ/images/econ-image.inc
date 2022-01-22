@@ -5,7 +5,7 @@ IMAGE_LINGUAS = ""
   
 inherit core-image
   
-IMAGE_INSTALL = "packagegroup-core-boot os-release"
+IMAGE_INSTALL = "packagegroup-core-boot os-release busybox-udhcpc"
   
 rootfs_fixup_var_volatile () {
         install -m 1777 -d ${IMAGE_ROOTFS}/${localstatedir}/volatile/tmp

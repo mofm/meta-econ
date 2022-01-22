@@ -1,2 +1,2 @@
-inherit econ-common
 inherit nspawn
+inherit econ-common

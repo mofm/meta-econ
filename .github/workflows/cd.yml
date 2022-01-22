@@ -79,7 +79,7 @@ jobs:
       - name: Sign SHA256SUMS file
         shell: bash
         run: |
-          gpg --sign ./build/SHA256SUMS
+          gpg --detach-sig --output ./build/SHA256SUMS.gpg ./build/SHA256SUMS
 
       - name: Release Notes
         uses: CSchoel/release-notes-from-changelog@v1

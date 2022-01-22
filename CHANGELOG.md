@@ -18,6 +18,17 @@ nothing
 
 nothing
 
+## [0.3.0-r2] 23/01/2022
+
+### Added 
+
+* added busybox-udhcpc package to core image
+
+### Changed
+
+* gpg --detach-sig
+* changed econ class
+
 
 ## [0.3.0-r1]
 
@@ -75,6 +86,7 @@ nothing
 
 
 [Unreleased]: https://github.com/mofm/meta-econ/compare/0.3.0-r1...HEAD
+[0.3.0-r2]: https://github.com/mofm/meta-econ/compare/0.3.0-r2...0.3.0-r1
 [0.3.0-r1]: https://github.com/mofm/meta-econ/compare/0.3.0-r1...0.3.0
 [0.3.0]: https://github.com/mofm/meta-econ/compare/0.3.0...0.2.0-r2
 [0.2.0-r2]: https://github.com/mofm/meta-econ/compare/0.2.0-r2...0.2.0
